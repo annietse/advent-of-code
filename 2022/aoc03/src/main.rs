@@ -26,7 +26,6 @@ fn part1() {
             }
             count +=1;
         }
-        
         'outer: for &item1 in compart1.iter() {
             for &item2 in compart2.iter() {
                 if item1 == item2 {
@@ -74,19 +73,16 @@ fn part2() {
                                 if alphabet[n] == item1 {
                                     let x: u64 = n.try_into().unwrap();
                                     sum += x+1;
-                                    break 'outer;
+                                    break 'outer
                                 }
                                 
                             }
                         }
-                        
                     }
-                    
                 }
             }
         }
-        
     }
     println!("Sum: {}", sum);
-    println!("Count: {}", count);
+    // println!("Count: {}", count);
 }
