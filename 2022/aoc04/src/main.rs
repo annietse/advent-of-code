@@ -1,5 +1,5 @@
 use std::fs::File;
-use std::io::{self, prelude::*, BufReader};
+use std::io::{self, prelude::*};
 use std::path::Path;
 
 fn main() {
@@ -43,7 +43,7 @@ fn part2(limits: Vec<u32>, mut count: u32) -> u32 {
     return count;
 }
 
-fn read_lines<P>(input: P) -> io::Result<io::Lines<io::BufReader<File>>>
+fn read_lines<P>(_input: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where
     P: AsRef<Path>,
 {
