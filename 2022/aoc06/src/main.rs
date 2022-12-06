@@ -10,7 +10,7 @@ fn part1(contents: String) {
     // make empty set
     let mut set: HashSet<char> = HashSet::new();
     for (i, c) in contents.chars().enumerate() {
-        if set.len() < 14 {
+        if set.len() < 4 {
             if set.contains(&c) {
                 set.clear();
             }
