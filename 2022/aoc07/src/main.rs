@@ -13,7 +13,9 @@ fn main() {
 
 fn part1(contents: String) {
     let mut path = Vec::new();
+    path.push("/");
     let mut map = HashMap::new();
+    map.insert(path.join(""), 0 );
     for line in contents.lines() {
         let command: Vec<&str> = line.split(" ").collect();
             if command.contains(&"cd") {
@@ -23,7 +25,7 @@ fn part1(contents: String) {
                         path.pop();
                     }
                     "/" => {
-                        path.clear();
+                        path.drain(1..);
                     }
                     _ => {
                         path.push(dir);
@@ -52,4 +54,18 @@ fn part1(contents: String) {
         }
     }
     println!("sum: {}", total);
+    part2(map);
+}
+
+fn part2(map: HashMap<String, i64>) {
+    let root_size = map.get("/").unwrap();
+    let diff: i64 = 70000000 - root_size;
+    let required: i64 = 30000000 - diff;
+    let mut result: i64 = 70000000;
+    for (_, v) in map.iter() {
+        if v >= &required && v < &result {
+            result = *v;
+        }
+    }
+    println!("{}", result);
 }
