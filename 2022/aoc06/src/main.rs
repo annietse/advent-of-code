@@ -1,23 +1,36 @@
-use std::collections::HashSet;
 use std::fs;
+use std::collections::VecDeque;
 
 fn main() {
+    // let prank = "Get pranked bro!";
+    // println!("{}", prank);
     let contents = fs::read_to_string("input.txt").expect("Should have been able to read the file");
     part1(contents);
 }
 
 fn part1(contents: String) {
-    // make empty set
-    let mut set: HashSet<char> = HashSet::new();
+    let mut marker: VecDeque<char>  = VecDeque::new();
     for (i, c) in contents.chars().enumerate() {
-        if set.len() < 4 {
-            if set.contains(&c) {
-                set.clear();
+        if marker.len() < 14 {
+            // pranked();
+            if marker.contains(&c) {
+                let mut index = 0;
+                for (x, ch) in marker.iter().enumerate() {
+                    if *ch == c {
+                        index = x;
+                        break;
+                    }
+                }
+                marker.drain(0..index+1);
             }
-            set.insert(c);
+            marker.push_back(c);
         } else {
-            println!("{}", i);
+            println!("First marker: {}", i);
             break;
         }
     }
 }
+
+// fn pranked(){
+//     println!("Get pranked vesty")
+// }
