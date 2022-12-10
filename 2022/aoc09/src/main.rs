@@ -35,11 +35,6 @@ fn part1(contents: String) {
                 0.. => y_magnitude = y_diff,
                 _ => y_magnitude = -y_diff,
             }
-            // y and x out of range so diagonal
-            // y out of range only so move y
-            // x out of range only so move x
-            // not out of range so do not move
-            // println!("{} {}", x_diff, x_magnitude);
             if x_magnitude > 1 && y_magnitude == 1 || y_magnitude > 1 && x_magnitude == 1 {
                 // move diagonally
                 // find direction of y and x
@@ -77,12 +72,6 @@ fn part1(contents: String) {
                         // println!("left");
                     }
                 }
-                // if to the right, x + 1
-                // if to the left, x - 1
-                // up, y + 1
-                // down, y - 1
-                // if neither x or y are the same as the head,
-                // move diagonally once
             }
             // println!("h {:?}", head);
             // println!("t {:?}", tail);
@@ -100,7 +89,6 @@ fn part2(contents: String) {
     coords.insert([0,0]);
     let mut knot: [[i32;2];10] = [[0,0];10];
     // knot positions
-        
     for line in contents.lines() {
         // get intruction
         let v: Vec<&str> = line.split(" ").collect();
@@ -109,7 +97,6 @@ fn part2(contents: String) {
             for i in 0..9 {
             // head and tail knots retrieved
             // repeats through all the moves
-            
                 let mut head: [i32;2] = knot[i];
                 let mut tail: [i32;2] = knot[i+1];
                 // changes only the first one
